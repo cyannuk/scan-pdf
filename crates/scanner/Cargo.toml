@@ -1,0 +1,12 @@
+[package]
+name = "pdf-scan-core"
+description = "Heuristic scanner of PDF files for potentially malicious content"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+memchr = "2"
+miniz_oxide = "0.8"
