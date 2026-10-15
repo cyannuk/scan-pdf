@@ -1,0 +1,45 @@
+{
+  "name": "scan-pdf",
+  "version": "1.1.0",
+  "description": "Native Node.js addon that scans PDF files for potentially malicious content",
+  "license": "MIT",
+  "author": "cyannuk <cyannuk@gmail.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "prebuilds/linux-x64/scan-pdf.node",
+    "prebuilds/win32-x64/scan-pdf.node"
+  ],
+  "os": [
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "pdf",
+    "malware",
+    "scanner",
+    "security",
+    "napi"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:linux": "node scripts/build.mjs linux",
+    "build:win": "node scripts/build.mjs win32",
+    "test:rust": "cargo test -p pdf-scan-core",
+    "test:node": "node --experimental-transform-types --expose-gc --no-warnings --test test/*.test.mts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "npm run test:rust && npm run typecheck && npm run test:node"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
